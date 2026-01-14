@@ -3,6 +3,14 @@ import step1 from "../../assets/images/step-1.png";
 import step2 from "../../assets/images/step-2.png";
 import step3 from "../../assets/images/step-3.png";
 import step4 from "../../assets/images/step-4.png";
+import template1 from "../../assets/images/template-1.png";
+import template2 from "../../assets/images/template-2.png";
+import template3 from "../../assets/images/template-3.png";
+import feedbackImage1 from "../../assets/images/feedback-image-1.png";
+import feedbackImage2 from "../../assets/images/feedback-image-2.png";
+import feedbackImage3 from "../../assets/images/feedback-image-3.png";
+import logo from "../../assets/images/logo.png";
+import { FaArrowRight } from "react-icons/fa";
 import "./LandingPage.css";
 
 const LandingPage = () => {
@@ -86,9 +94,84 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section className="featured bg-[#1C3B5E] text-white">
-        <h1 className="font-semibold text-3xl md:4xl">Featured Templates</h1>  te
+      <section className="featured bg-[#1C3B5E] text-white py-8 md:py-12 md:px-20 flex flex-col items-center gap-6 lg:gap-10">
+        <h1 className="font-semibold text-3xl md:4xl text-center">
+          Featured Templates
+        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+          <div className="flex flex-col items-start">
+            <img src={template1} alt="template-1" />
+            <div className="gap-2.5 p-2.5 bg-[#1ABCFE] flex items-center mt-2.5 md:mt-5 cursor-pointer rounded-md">
+              <p className="text-xl lg:2xl font-semibold">
+                Start building Free
+              </p>
+              <FaArrowRight />
+            </div>
+          </div>
+          <div className="flex flex-col items-start">
+            <img src={template2} alt="template-2" />
+            <div className="gap-2.5 p-2.5 bg-[#1ABCFE] flex items-center mt-2.5 md:mt-5 cursor-pointer rounded-md">
+              <p className="text-xl lg:2xl font-semibold">
+                Start building Free
+              </p>
+              <FaArrowRight />
+            </div>
+          </div>
+          <div className="flex flex-col items-start">
+            <img src={template3} alt="template-3" />
+            <div className="gap-2.5 p-2.5 bg-[#1ABCFE] flex items-center mt-2.5 md:mt-5 cursor-pointer rounded-md">
+              <p className="text-xl lg:2xl font-semibold">
+                Start building Free
+              </p>
+              <FaArrowRight />
+            </div>
+          </div>
+        </div>
       </section>
+
+      <section className="py-10 md:pt-24 md:pb-20 lg:pt-[100px] lg:px-[100px] flex flex-col gap-6 lg:gap-10 items-center">
+        <h1 className="font-semibold text-3xl md:4xl text-center">
+          What People Say About Us
+        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-10">
+          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center justify-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
+            <img src={feedbackImage1} alt="feedback-1" className="w-[100px]" />
+            <p className="text-xl lg:text-2xl">
+              “This tool helped me create a professional résumé in under 10
+              minutes — and I landed interviews immediately.” <br /> -Rita
+            </p>
+          </div>
+          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center justify-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
+            <img src={feedbackImage2} alt="feedback-1" className="w-[100px]" />
+            <p className="text-xl lg:text-2xl">
+              “Thanks to Portify, I finally have a portfolio I’m proud to share
+              with recruiters.” <br /> -Susan
+            </p>
+          </div>
+          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center justify-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
+            <img src={feedbackImage3} alt="feedback-1" className="w-[100px]" />
+            <p className="text-xl lg:text-2xl">
+              “I’ve tried many résumé builders, but this is the first one that
+              actually made the process simple.” <br /> -Jamal
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="p-10 lg:p-[100px] lg:pb-5 bg-[#1C3B5E] text-white flex flex-col gap-10 text-center">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between items-center">
+          <div className="logo flex gap-2 items-end">
+            <img src={logo} alt="logo" />
+            <p className="font-semibold text-3xl lg:text-4xl">Portify</p>
+          </div>
+          <div className="font-semibold text-xl lg:2xl">
+            <p>Home | Products | Templates | About Us | Contact Us</p>
+          </div>
+        </div>
+        <div>
+          <small>Terms of Services | Privacy Policy</small>
+        </div>
+      </footer>
     </div>
   );
 };
