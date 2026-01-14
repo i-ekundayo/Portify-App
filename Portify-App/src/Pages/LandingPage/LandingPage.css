@@ -1,0 +1,30 @@
+.hero-container {
+  height: 500px;
+  background-image: url('../../assets/images/hero-image.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+
+.btn {
+  padding: 12px 40px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+  font-family: Inter;
+}
+.secondary-btn {
+  border: 2px solid #1ABCFE;
+}
+
+@media (min-width: 768px) {
+  .framework-step {
+    width: 27rem;
+  }
+}
+
+
+.framework-step-body {
+  font-family: Inter;
+}
