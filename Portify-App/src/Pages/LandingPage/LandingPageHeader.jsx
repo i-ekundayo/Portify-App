@@ -10,9 +10,14 @@ import "./LandingPageHeader.css";
 
 const LandingPageHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDropdown = (link) => {
+    setIsDropdownOpen(isDropdownOpen === link ? null : link);
   };
 
   return (
@@ -21,21 +26,61 @@ const LandingPageHeader = () => {
         <img src={logo} alt="logo" />
         <p className="font-semibold text-3xl lg:text-4xl">Portify</p>
       </div>
-      <FaBars className="menu-icon text-[#424C59] cursor-pointer" onClick={toggleMenu} />
+      <FaBars
+        className="menu-icon text-[#424C59] cursor-pointer"
+        onClick={toggleMenu}
+      />
 
-      <nav className={`absolute ${isMenuOpen ? "block" : "hidden"} bg-white top-0 right-0 md:right-10 rounded-lg p-5 md:py-5 md:px-10 lg:p-10 flex flex-col gap-10`}>
+      <nav
+        className={`absolute ${
+          isMenuOpen ? "block" : "hidden"
+        } bg-white top-0 right-0 md:right-10 rounded-lg p-5 md:py-5 md:px-10 lg:p-10 flex flex-col gap-10`}
+      >
         <div className="flex justify-end">
-          <FaTimes className="close-icon cursor-pointer size-7" onClick={toggleMenu} />
+          <FaTimes
+            className="close-icon cursor-pointer size-7"
+            onClick={toggleMenu}
+          />
         </div>
         <div className="flex flex-col gap-8 border-y border-y-black py-8 pr-24">
           <ul className="flex flex-col gap-3 text-xl">
-            <li className="flex items-center">
-              Products{" "}
-              <FaAngleDown className="inline-block ml-3 size-4 text-[#424C59]" />
+            <li>
+              <button className="flex items-center">
+                Products
+                <FaAngleDown
+                  className={`${
+                    isDropdownOpen === "products" ? "rotate-180" : ""
+                  } inline-block ml-3 size-4 text-[#424C59] transition-transform`}
+                  onClick={() => toggleDropdown("products")}
+                />
+              </button>
+
+              {isDropdownOpen === "products" && (
+                <ul className={`font-light text-lg ml-5 mt-3`}>
+                  <li>Resume Builder</li>
+                  <li>CV Builder</li>
+                  <li>Portfolio Builder</li>
+                  <li>Cover letter</li>
+                </ul>
+              )}
             </li>
-            <li className="flex items-center">
-              Templates{" "}
-              <FaAngleDown className="inline-block ml-3 size-4 text-[#424C59]" />
+            <li>
+              <button className="flex items-center">
+                Templates
+                <FaAngleDown
+                  className={`${
+                    isDropdownOpen === "templates" ? "rotate-180" : ""
+                  } inline-block ml-3 size-4 text-[#424C59] transition-transform`}
+                  onClick={() => toggleDropdown("templates")}
+                />
+              </button>
+              {isDropdownOpen === "templates" && (
+                <ul className={`font-light text-lg ml-5 mt-3`}>
+                  <li>Resume Template</li>
+                  <li>CV Template</li>
+                  <li>Portfolio Template</li>
+                </ul>
+              )}
             </li>
             <li>About</li>
             <li>Account</li>
