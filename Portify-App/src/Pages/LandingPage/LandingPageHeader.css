@@ -9,3 +9,7 @@
     width: 30px;
   }
 }
+
+nav {
+  box-shadow: -6px 6px 6px 8px rgba(0, 0, 0, 0.16);
+}

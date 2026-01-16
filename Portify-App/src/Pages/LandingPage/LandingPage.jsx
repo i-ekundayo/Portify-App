@@ -134,21 +134,21 @@ const LandingPage = () => {
           What People Say About Us
         </h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-10">
-          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center justify-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
+          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
             <img src={feedbackImage1} alt="feedback-1" className="w-[100px]" />
             <p className="text-xl lg:text-2xl">
               “This tool helped me create a professional résumé in under 10
               minutes — and I landed interviews immediately.” <br /> -Rita
             </p>
           </div>
-          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center justify-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
+          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
             <img src={feedbackImage2} alt="feedback-1" className="w-[100px]" />
             <p className="text-xl lg:text-2xl">
               “Thanks to Portify, I finally have a portfolio I’m proud to share
               with recruiters.” <br /> -Susan
             </p>
           </div>
-          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center justify-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
+          <div className="px-5 py-7 rounded-xl flex flex-col gap-7 items-center text-center bg-[#1C3B5E] text-white max-w-[400px]">
             <img src={feedbackImage3} alt="feedback-1" className="w-[100px]" />
             <p className="text-xl lg:text-2xl">
               “I’ve tried many résumé builders, but this is the first one that
@@ -164,9 +164,9 @@ const LandingPage = () => {
             <img src={logo} alt="logo" />
             <p className="font-semibold text-3xl lg:text-4xl">Portify</p>
           </div>
-          <div className="font-semibold text-xl lg:2xl">
-            <p>Home | Products | Templates | About Us | Contact Us</p>
-          </div>
+          <p className="font-semibold text-xl lg:text-2xl">
+            Home | Products | Templates | About Us | Contact Us
+          </p>
         </div>
         <div>
           <small>Terms of Services | Privacy Policy</small>
