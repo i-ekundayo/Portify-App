@@ -1,4 +1,5 @@
 import LandingPageHeader from "./LandingPageHeader";
+import { Link } from "react-router-dom";
 import step1 from "../../assets/images/step-1.png";
 import step2 from "../../assets/images/step-2.png";
 import step3 from "../../assets/images/step-3.png";
@@ -18,18 +19,20 @@ const LandingPage = () => {
     <div>
       <LandingPageHeader />
 
+      {/* Hero Section */}
       <section className="hero-container flex items-center justify-center md:justify-start md:pl-[50px] lg:pl-[100px]">
         <div className="hero-content flex flex-col items-center md:items-start gap-6 w-4/5 md:w-2/5 lg:w-1/3">
           <h1 className="text-3xl lg:text-5xl text-white text-center md:text-start">
             The Digital Edge Your Career Needs.
           </h1>
           <div className="flex justify-center flex-wrap">
-            <button className="btn bg-[#1ABCFE] text-white">Login</button>
-            <button className="btn bg-white text-[#1ABCFE]">Signup</button>
+            <Link to="/login"><button className="btn bg-[#1ABCFE] text-white">Login</button></Link>
+            <Link to="/signup"><button className="btn bg-white text-[#1ABCFE]">Signup</button></Link>
           </div>
         </div>
       </section>
 
+      {/* Framework Section */}
       <section className="framework py-10 md:py-20 flex flex-col gap-10 md:gap-16">
         <h1 className="text-3xl lg:text-4xl font-semibold text-center">
           Designed for Modern Creative
@@ -94,6 +97,7 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Featured Templates Section */}
       <section className="featured bg-[#1C3B5E] text-white py-8 md:py-12 md:px-20 flex flex-col items-center gap-6 lg:gap-10">
         <h1 className="font-semibold text-3xl md:4xl text-center">
           Featured Templates
@@ -129,6 +133,7 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
       <section className="py-10 md:pt-24 md:pb-20 lg:pt-[100px] lg:px-[100px] flex flex-col gap-6 lg:gap-10 items-center">
         <h1 className="font-semibold text-3xl md:4xl text-center">
           What People Say About Us
@@ -158,6 +163,7 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Footer Section */}
       <footer className="p-10 lg:p-[100px] lg:pb-5 bg-[#1C3B5E] text-white flex flex-col gap-10 text-center">
         <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between items-center">
           <div className="logo flex gap-2 items-end">
