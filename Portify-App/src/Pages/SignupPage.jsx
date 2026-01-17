@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import facebookIcon from "../assets/images/logos_facebook.png";
-import googleIcon from "../assets/images/material-icon-theme_google.png";
 import Logo from "../assets/images/logo.png";
-import { FaApple } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import "./LoginPage.css";
 
@@ -17,8 +14,8 @@ const SignupPage = () => {
   return (
     <section className="min-h-screen dark:bg-black bg-white font-inter flex items-center justify-center md:justify-end relative ">
       <div className="fixed left-0 top-1/2 -translate-y-1/2 w-2/5 rounded-r-full bg-[#1C3B5E] text-white border-[6px] border-l-0 border-[#1ABCFE] h-[120%] hidden md:flex items-center justify-center">
-        <p className="font-bold text-3xl lg:text-5xl text-center">
-          WELCOME BACK!
+        <p className="font-bold text-3xl lg:text-4xl text-center">
+          CREATE ACCOUNT
         </p>
       </div>
 
@@ -35,10 +32,23 @@ const SignupPage = () => {
         >
           <div className="flex flex-col">
             <label
-              htmlFor="email"
-              className=" text-[#424C59B2] dark:text-[#1ABCFEB2] mb-2.5 text-xl lg:text-2xl"
+              htmlFor="fullName"
+              className=" text-[#424C59B2] dark:text-[#1ABCFEB2] mb-2.5 text-md lg:text-xl"
             >
-              Email
+              Full Name
+            </label>
+            <input
+              type="text"
+              className="border-[1.5px] bg-[#F5F8FA] dark:bg-[#424C59CC] border-[#424C5999] dark:border-[#1ABCFEB2] rounded-lg p-2 text-black dark:text-white outline-0 focus:border-[#1C3B5E] dark:focus:border-[3px] dark:focus:border-[#1ABCFE]"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label
+              htmlFor="email"
+              className=" text-[#424C59B2] dark:text-[#1ABCFEB2] mb-2.5 text-md lg:text-xl"
+            >
+              Email Address
             </label>
             <input
               type="email"
@@ -49,7 +59,7 @@ const SignupPage = () => {
           <div className="flex flex-col">
             <label
               htmlFor="username"
-              className=" text-[#424C59B2] dark:text-[#1ABCFEB2] mb-2.5 text-xl lg:text-2xl"
+              className=" text-[#424C59B2] dark:text-[#1ABCFEB2] mb-2.5 text-md lg:text-xl"
             >
               Password
             </label>
@@ -63,38 +73,19 @@ const SignupPage = () => {
                 onClick={showPassword}
               />
             </div>
-            <Link to="/forgot-password" className="self-end">
-              Forgot Password?
-            </Link>
           </div>
 
-          <button className="font-semibold text-xl lg:text-2xl p-2 bg-[#1ABCFE] text-white rounded-lg mb-2">
-            Login
+          <button className="font-semibold text-md lg:text-xl p-2 border border-[#1ABCFE] hover:bg-[#1ABCFE] text-[#1ABCFE] hover:text-white rounded-lg mb-2">
+            Sign Up
           </button>
         </form>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center">
           <p className="text-[#1C3B5E] dark:text-white">
-            New User?{" "}
-            <Link to="/signup" className="text-[#1ABCFE]">
-              Sign Up
+            Already have an account?{" "}
+            <Link to="/login" className="text-[#1ABCFE]">
+              Login
             </Link>
           </p>
-          <p className="text-black dark:text-white text-xl lg:text-2xl">
-            Or sign up with
-          </p>
-          <div className="flex gap-3 lg:gap-5">
-            <img
-              src={facebookIcon}
-              alt="facebook-icon"
-              className="size-12 cursor-pointer"
-            />
-            <FaApple className="text-black dark:text-white size-12 cursor-pointer" />
-            <img
-              src={googleIcon}
-              alt="google-icon"
-              className="size-12 cursor-pointer"
-            />
-          </div>
         </div>
       </div>
     </section>
