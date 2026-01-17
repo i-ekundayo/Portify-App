@@ -1,0 +1,13 @@
+.active {
+  background-color: #1C3B5E;
+}
+
+@media (max-width: 375px) {
+  .professions, .primary-goals, .themes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.active {
+  border: 2px solid #1ABCFE;
+}

@@ -3,6 +3,7 @@ import LandingPage from './Pages/LandingPage/LandingPage.jsx';
 import LoginPage from './Pages/LoginPage.jsx';
 import SignupPage from './Pages/SignupPage.jsx';
 import ForgotPassword from './Pages/ForgotPassword.jsx';
+import OnboardingPage from './Pages/OnboardingPage.jsx';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/onboarding" element={<OnboardingPage />} />
     </Routes>
   )
 }
