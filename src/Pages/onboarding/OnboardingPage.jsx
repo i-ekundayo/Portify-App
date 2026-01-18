@@ -39,7 +39,7 @@ const OnboardingPage = () => {
       </div>
       <button
         disabled={currentSlide === totalSteps - 1}
-        className="px-4 py-1 border-2 border-[#1ABCFE] text-[#1ABCFE] text-md rounded-lg mt-4 self-end hover:bg-[#1ABCFE] hover:text-white transition-all"
+        className={`px-4 py-1 border-2 border-[#1ABCFE] text-[#1ABCFE] text-md rounded-lg mt-4 self-end transition-all ${currentSlide === totalSteps - 1 ? "" : "hover:bg-[#1ABCFE] hover:text-white "}`}
         onClick={skip}
       >
         Skip
