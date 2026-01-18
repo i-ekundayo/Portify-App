@@ -3,7 +3,7 @@ import LandingPage from './Pages/LandingPage/LandingPage.jsx';
 import LoginPage from './Pages/LoginPage.jsx';
 import SignupPage from './Pages/SignupPage.jsx';
 import ForgotPassword from './Pages/ForgotPassword.jsx';
-import OnboardingPage from './Pages/OnboardingPage.jsx';
+import OnboardingPage from './Pages/onboarding/OnboardingPage.jsx';
 
 const App = () => {
   return (
