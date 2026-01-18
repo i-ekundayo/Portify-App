@@ -38,6 +38,7 @@ const OnboardingPage = () => {
         ))}
       </div>
       <button
+        disabled={currentSlide === totalSteps - 1}
         className="px-4 py-1 border-2 border-[#1ABCFE] text-[#1ABCFE] text-md rounded-lg mt-4 self-end hover:bg-[#1ABCFE] hover:text-white transition-all"
         onClick={skip}
       >
@@ -45,16 +46,36 @@ const OnboardingPage = () => {
       </button>
       <div className="self-center">
         {/* First Slide */}
-        {currentSlide === 0 && <FirstSlide selectOption={selectOption} selectedOption={selectedOption} />}
+        {currentSlide === 0 && (
+          <FirstSlide
+            selectOption={selectOption}
+            selectedOption={selectedOption}
+          />
+        )}
 
         {/* Second Slide */}
-        {currentSlide === 1 && <SecondSlide selectOption={selectOption} selectedOption={selectedOption} />}
+        {currentSlide === 1 && (
+          <SecondSlide
+            selectOption={selectOption}
+            selectedOption={selectedOption}
+          />
+        )}
 
         {/* Third Slide */}
-        {currentSlide === 2 && <ThirdSlide selectOption={selectOption} selectedOption={selectedOption} />}
+        {currentSlide === 2 && (
+          <ThirdSlide
+            selectOption={selectOption}
+            selectedOption={selectedOption}
+          />
+        )}
 
         {/* Fourth Slide */}
-        {currentSlide === 3 && <FourthSlide selectOption={selectOption} selectedOption={selectedOption} />}
+        {currentSlide === 3 && (
+          <FourthSlide
+            selectOption={selectOption}
+            selectedOption={selectedOption}
+          />
+        )}
       </div>
       <button
         disabled={!selectedOption}
