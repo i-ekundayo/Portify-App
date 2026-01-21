@@ -32,7 +32,7 @@ const LandingPageHeader = () => {
       />
 
       <nav
-        className={`absolute ${
+        className={`landing-page-nav absolute ${
           isMenuOpen ? "block" : "hidden"
         } bg-white top-0 right-0 md:right-10 rounded-lg p-5 md:py-5 md:px-10 lg:p-10 flex flex-col gap-10`}
       >

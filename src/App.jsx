@@ -4,6 +4,8 @@ import LoginPage from './Pages/LoginPage.jsx';
 import SignupPage from './Pages/SignupPage.jsx';
 import ForgotPassword from './Pages/ForgotPassword.jsx';
 import OnboardingPage from './Pages/onboarding/OnboardingPage.jsx';
+import PersonalInfoPage from './Pages/dashboard/PersonalInfoPage.jsx';
+import EducationPage from './Pages/dashboard/EducationPage.jsx'
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/onboarding" element={<OnboardingPage />} />
+      <Route path="/dashboard/personal-info" element={<PersonalInfoPage />} />
+      <Route path="/dashboard/education" element={<EducationPage />} />
     </Routes>
   )
 }
