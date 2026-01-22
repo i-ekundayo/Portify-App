@@ -1,14 +1,51 @@
+import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/logo.png";
 import { FaEye } from "react-icons/fa";
 import "./LoginPage.css";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+  });
+
+  const getInput = (e) => {
+    const {name, value} = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    console.log(formData);
+    
+  };
 
   const showPassword = () => {
     setShowPass(!showPass);
+  };
+
+  const signUp = async () => {
+    try{
+      const { email, password, fullName } = formData;
+
+      const response = await axios.post("/api/users/register", {
+        email: email,
+        password: password,
+        fullName: fullName,
+        username: email,
+      });
+
+      console.log(response.data.message)
+      navigate("/login");
+    } catch(error) {
+      console.error(error.response?.data || error.message);
+    }
   };
 
   return (
@@ -38,8 +75,11 @@ const SignupPage = () => {
               Full Name
             </label>
             <input
+              name="fullName"
               type="text"
               className="border-[1.5px] bg-[#F5F8FA] dark:bg-[#424C59CC] border-[#424C5999] dark:border-[#1ABCFEB2] rounded-lg p-2 text-black dark:text-white outline-0 focus:border-[#1C3B5E] dark:focus:border-[3px] dark:focus:border-[#1ABCFE]"
+              onChange={getInput}
+              value={formData.fullName}
             />
           </div>
 
@@ -51,8 +91,11 @@ const SignupPage = () => {
               Email Address
             </label>
             <input
+              name="email"
               type="email"
               className="border-[1.5px] bg-[#F5F8FA] dark:bg-[#424C59CC] border-[#424C5999] dark:border-[#1ABCFEB2] rounded-lg p-2 text-black dark:text-white outline-0 focus:border-[#1C3B5E] dark:focus:border-[3px] dark:focus:border-[#1ABCFE]"
+              onChange={getInput}
+              value={formData.email}
             />
           </div>
 
@@ -65,8 +108,11 @@ const SignupPage = () => {
             </label>
             <div className="relative">
               <input
+                name="password"
                 type={showPass ? "text" : "password"}
                 className="border-[1.5px] bg-[#F5F8FA] dark:bg-[#424C59CC] border-[#424C5999] dark:border-[#1ABCFEB2] rounded-lg p-2 text-black dark:text-white outline-0 focus:border-[#1C3B5E] dark:focus:border-[3px] dark:focus:border-[#1ABCFE] w-full"
+                onChange={getInput}
+                value={formData.password}
               />
               <FaEye
                 className="absolute right-5 top-1/2 -translate-y-1/2 text-[#424C59B2] dark:text-[#1ABCFEB2] cursor-pointer"
@@ -75,7 +121,7 @@ const SignupPage = () => {
             </div>
           </div>
 
-          <button className="font-semibold text-md lg:text-xl p-2 border border-[#1ABCFE] hover:bg-[#1ABCFE] text-[#1ABCFE] hover:text-white rounded-lg mb-2">
+          <button className="font-semibold text-md lg:text-xl p-2 border border-[#1ABCFE] hover:bg-[#1ABCFE] text-[#1ABCFE] hover:text-white rounded-lg mb-2" onClick={signUp}>
             Sign Up
           </button>
         </form>
