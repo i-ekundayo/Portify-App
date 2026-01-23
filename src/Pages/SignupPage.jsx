@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Logo from "../assets/images/logo.png";
 import { FaEye } from "react-icons/fa";
 import "./LoginPage.css";
@@ -42,6 +43,7 @@ const SignupPage = () => {
       });
 
       console.log(response.data.message)
+      toast.success(response.data.message);
       navigate("/login");
     } catch(error) {
       console.error(error.response?.data || error.message);
