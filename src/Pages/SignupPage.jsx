@@ -31,7 +31,8 @@ const SignupPage = () => {
     setShowPass(!showPass);
   };
 
-  const signUp = async () => {
+  const signUp = async (e) => {
+    e.preventDefault();
     try{
       const { email, password, fullName } = formData;
 
@@ -50,6 +51,9 @@ const SignupPage = () => {
       
       toast.error(error.response?.data?.message || "Signup failed");
     }
+
+    console.log('working');
+    
   };
 
   return (
