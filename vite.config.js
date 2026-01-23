@@ -9,7 +9,6 @@ export default defineConfig({
       "/api": {
         target: "https://portify-backend-hm08.onrender.com",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
