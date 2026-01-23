@@ -1,7 +1,10 @@
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import facebookIcon from "../assets/images/logos_facebook.png";
-import googleIcon from "../assets/images/material-icon-theme_google.png"; 
+import googleIcon from "../assets/images/material-icon-theme_google.png";
 import Logo from "../assets/images/logo.png";
 import { FaApple } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
@@ -9,10 +12,45 @@ import "./LoginPage.css";
 
 const LoginPage = () => {
   const [showPass, setShowPass] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const getInput = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }))  
+  };
 
   const showPassword = () => {
     setShowPass(!showPass);
   };
+
+  const login = async (e) => {
+    e.preventDefault();
+
+    const {email, password} = formData;
+
+    try{
+      const response = await axios.post("/api/v1/users/login", {
+        email,
+        password
+      });
+      toast.success(response.data.message);
+      navigate("/dashboard/personal-info")
+
+      
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message || "Login Failed");
+      
+    }
+  }
 
   return (
     <section className="min-h-screen dark:bg-black bg-white font-inter flex items-center justify-center md:justify-end relative ">
@@ -41,8 +79,11 @@ const LoginPage = () => {
               Email
             </label>
             <input
+              name="email"
               type="email"
               className="border-[1.5px] bg-[#F5F8FA] dark:bg-[#424C59CC] border-[#424C5999] dark:border-[#1ABCFEB2] rounded-lg p-2 text-black dark:text-white outline-0 focus:border-[#1C3B5E] dark:focus:border-[3px] dark:focus:border-[#1ABCFE]"
+              onChange={getInput}
+              value={formData.email}
             />
           </div>
 
@@ -55,8 +96,11 @@ const LoginPage = () => {
             </label>
             <div className="relative">
               <input
+                name="password"
                 type={showPass ? "text" : "password"}
                 className="border-[1.5px] bg-[#F5F8FA] dark:bg-[#424C59CC] border-[#424C5999] dark:border-[#1ABCFEB2] rounded-lg p-2 text-black dark:text-white outline-0 focus:border-[#1C3B5E] dark:focus:border-[3px] dark:focus:border-[#1ABCFE] w-full"
+                onChange={getInput}
+                value={formData.password}
               />
               <FaEye
                 className="absolute right-5 top-1/2 -translate-y-1/2 text-[#424C59B2] dark:text-[#1ABCFEB2] cursor-pointer"
@@ -68,7 +112,7 @@ const LoginPage = () => {
             </Link>
           </div>
 
-          <button className="font-semibold text-md lg:text-xl p-2 border border-[#1ABCFE] hover:bg-[#1ABCFE] text-[#1ABCFE] hover:text-white rounded-lg mb-2">
+          <button className="font-semibold text-md lg:text-xl p-2 border border-[#1ABCFE] hover:bg-[#1ABCFE] text-[#1ABCFE] hover:text-white rounded-lg mb-2" onClick={login}>
             Login
           </button>
         </form>
@@ -99,6 +143,6 @@ const LoginPage = () => {
       </div>
     </section>
   );
-}
+};
 
-export default LoginPage
+export default LoginPage;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FirstSlide from "./FirstSlide";
 import SecondSlide from "./SecondSlide";
 import ThirdSlide from "./ThirdSlide";
@@ -8,6 +9,7 @@ import "./OnboardinPage.css";
 const OnboardingPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
+  const navigate = useNavigate();
 
   const skip = () => {
     setSelectedOption(null);
@@ -18,9 +20,11 @@ const OnboardingPage = () => {
     setSelectedOption(heading);
   }
 
-  const activateNextButton = () => {
+  const activateNextButton = (e) => {
     setSelectedOption(null);
     setCurrentSlide((prev) => Math.min(prev + 1, totalSteps - 1));
+
+    e.target.value === "Start Building" && navigate("/login");
   };
 
   const totalSteps = 4;
@@ -80,7 +84,7 @@ const OnboardingPage = () => {
       <button
         disabled={!selectedOption}
         className={`w-4/5 lg:w-1/2 py-2 border-2 text-md self-center rounded-lg mt-6 ${selectedOption ? "bg-[#1ABCFE] text-white" : "border-[#1ABCFE] text-[#1ABCFE]"}  transition-all`}
-        onClick={activateNextButton}
+        onClick={activateNextButton} value = {currentSlide === 3 ? "Start Building" : "Next"}
       >
         {currentSlide === 3 ? "Start Building" : "Next"}
       </button>

@@ -73,7 +73,7 @@ const PersonalInfoPage = () => {
                 <label htmlFor="job-role">Last Name</label>
                 <input
                   type="text"
-                  placeholder="Enter your first name e.g John"
+                  placeholder="Enter your last name e.g Doe"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-2 lg:py-5"
                 />
               </div>

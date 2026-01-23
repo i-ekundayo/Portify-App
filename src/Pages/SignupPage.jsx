@@ -22,8 +22,6 @@ const SignupPage = () => {
       ...prev,
       [name]: value,
     }));
-
-    console.log(formData);
     
   };
 
@@ -36,23 +34,17 @@ const SignupPage = () => {
     try{
       const { email, password, fullName } = formData;
 
-      const response = await axios.post("/api/users/register", {
+      const response = await axios.post("/api/v1/users/register", {
         email: email,
         password: password,
         fullName: fullName,
         username: email,
       });
-
-      console.log(response.data.message)
       toast.success(response.data.message);
-      navigate("/login");
+      navigate("/onboarding");
     } catch(error) {
-      console.log(error.message);
-      
       toast.error(error.response?.data?.message || "Signup failed");
     }
-
-    console.log('working');
     
   };
 
