@@ -45,13 +45,13 @@ const EducationPage = () => {
     }));
 
     console.log(formData);
-    
   };
 
   // Submit personal info
   const Education = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+    console.log("TOKEN:", token);
 
     const { degree, university, course, yearOfGrad, location, description } =
       formData;

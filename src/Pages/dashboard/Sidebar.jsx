@@ -24,7 +24,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar bg-[#1C3B5E] border-r-[6px] border-[#1ABCFE] text-white flex flex-col items-center xl:py-[85px] py-10 gap-16 xl:gap-[100px]">
       <div className="flex flex-col gap-4 items-center text-center">
-        <ProfileCompletion percentage={48} />
+        <ProfileCompletion percentage={0} />
         <p className="font-semibold text-2xl xl:text-[32px]">
           Project Completion Score
         </p>
