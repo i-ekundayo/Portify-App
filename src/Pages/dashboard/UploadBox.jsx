@@ -39,7 +39,7 @@ const UploadBox = ({placeholder}) => {
           />
         </svg> */}
 
-        <div className="flex items-center justify-center w-[200px] h-[200px] border border-dashed border-gray-400 rounded-lg cursor-pointer">
+        <div className="flex items-center justify-center w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] border border-dashed border-gray-400 rounded-lg cursor-pointer">
           <div className="text-8xl font-bold">+</div>
         </div>
       </div>
