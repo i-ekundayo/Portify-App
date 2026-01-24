@@ -1,18 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header.jsx";
 import Sidebar from "./Sidebar.jsx";
-import Image from "../../assets/images/image-picture.png";
-import "./PersonalInfoPage.css";
 
-const PersonalInfoPage = () => {
-  const [picture, setPicture] = useState("");
-  const pictureUpload = (e) => {
-    console.log(e.target.files[0]);
-    
-    setPicture(e.target.files[0]?.name);
-  };
-  const size = 100;
+const ExperiencePage = () => {
   return (
     <div className="personal-info-page">
       <Header />
@@ -24,11 +14,11 @@ const PersonalInfoPage = () => {
         <section>
           <div className="text-center sm:text-left mb-10">
             <h2 className="font-semibold text-xl md:text-2xl  lg:text-3xl xl:text-4xl mb-2.5">
-              Personal Info
+              Experience
             </h2>
             <p className="font-inter text-sm">
-              Provide your personal information, and contact details. Ensure
-              your ATS profile is strong, and up-to-date.
+              Add your work experience, highlight your professional achievement
+              to stand out.
             </p>
           </div>
           <div>
@@ -37,90 +27,96 @@ const PersonalInfoPage = () => {
               className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-10"
             >
               <div className="flex flex-col gap-2.5">
-                <label htmlFor="job-role">Job Role/Title</label>
+                <label htmlFor="job-role">Job Title</label>
                 <input
                   type="text"
                   placeholder="Enter your role/title"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
                 />
               </div>
-              <div className="flex gap-2 items-center picture-image">
-                <img src={Image} alt="picture-image" width={size} />
-                <div className="flex flex-col gap-1">
-                  <input
-                    type="file"
-                    className="hidden"
-                    id="pictureUpload"
-                    onChange={pictureUpload}
-                  />
-                  <label
-                    htmlFor="pictureUpload"
-                    className="text-[#1ABCFE] font-inter cursor-pointer"
-                  >
-                    Upload Picture
-                  </label>
-                  {picture && (
-                    <span className="text-sm text-gray-600">{picture}</span>
-                  )}
-                </div>
-              </div>
               <div className="flex flex-col gap-2.5">
-                <label htmlFor="first-name">First Name</label>
+                <label htmlFor="company">Company</label>
                 <input
                   type="text"
-                  placeholder="Enter your first name e.g John"
+                  placeholder="Enter the name of your company"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
                 />
               </div>
               <div className="flex flex-col gap-2.5">
-                <label htmlFor="last-name">Last Name</label>
+                <label htmlFor="start-date">Start Date</label>
                 <input
-                  type="text"
-                  placeholder="Enter your last name e.g Doe"
-                  className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
-                />
-              </div>
-              <div className="flex flex-col gap-2.5">
-                <label htmlFor="phone-number">Phone Number</label>
-                <input
-                  type="text"
+                  type="date"
                   placeholder="Enter with country code e.g +234"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
                 />
               </div>
               <div className="flex flex-col gap-2.5">
-                <label htmlFor="email">Contact Email</label>
+                <label htmlFor="end-date">End Date</label>
                 <input
-                  type="email"
-                  placeholder="Enter your email address"
+                  type="date"
+                  placeholder="Enter with country code e.g +234"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
                 />
               </div>
               <div className="flex flex-col gap-2.5 col-span-full">
-                <label htmlFor="linkedIn">LinkedIn Profile</label>
-                <input
-                  type="text"
-                  placeholder="Enter your LinkedIn URL"
+                <label htmlFor="textarea">
+                  Responsibilities & Achievements
+                </label>
+                <textarea
+                  name="textarea"
+                  id=""
+                  rows="8"
+                  placeholder="List your responsibilities, projects, and key accomplishment"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
-                />
+                ></textarea>
+              </div>
+              <div className="flex flex-col gap-2.5 col-span-full">
+                <label htmlFor="textarea">Upload Images</label>
+                <input
+                  type="file"
+                  id=""
+                  rows="8"
+                  placeholder="Upload your project / design / pictures (screens or pages)"
+                  className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
+                ></input>
+              </div>
+              <div className="flex flex-col gap-2.5 col-span-full">
+                <label htmlFor="textarea">Description Box</label>
+                <input
+                  name="textarea"
+                  id=""
+                  rows="5"
+                  placeholder="Write a brief summary ON THE PROJECT ABOVE"
+                  className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
+                ></input>
+              </div>
+              <div className="flex flex-col gap-2.5 col-span-full">
+                <label htmlFor="textarea">Professional Summary</label>
+                <textarea
+                  name="textarea"
+                  id=""
+                  rows="8"
+                  placeholder="Briefly describe your professional journey"
+                  className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
+                ></textarea>
               </div>
             </form>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-10 mt-20">
-            <Link to="/dashboard">
+            <Link to="/dashboard/education">
               <button className="border-2 rounded-xl border-[#1ABCFE] text-[#1ABCFE] py-2 w-full">
                 Back
               </button>
             </Link>
             <button className="border-2 rounded-xl border-[#1ABCFE] bg-[#1ABCFE] text-white py-2">
-              Next: Education
+              Next: Skills
             </button>
           </div>
         </section>
       </main>
     </div>
   );
-};
+}
 
-export default PersonalInfoPage;
+export default ExperiencePage

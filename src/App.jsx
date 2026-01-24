@@ -7,7 +7,8 @@ import SignupPage from './Pages/SignupPage.jsx';
 import ForgotPassword from './Pages/ForgotPassword.jsx';
 import OnboardingPage from './Pages/onboarding/OnboardingPage.jsx';
 import PersonalInfoPage from './Pages/dashboard/PersonalInfoPage.jsx';
-import EducationPage from './Pages/dashboard/EducationPage.jsx'
+import EducationPage from './Pages/dashboard/EducationPage.jsx';
+import ExperiencePage from './Pages/dashboard/ExperiencePage.jsx';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/dashboard/personal-info" element={<PersonalInfoPage />} />
         <Route path="/dashboard/education" element={<EducationPage />} />
+        <Route path='/dashboard/experience' element={<ExperiencePage />} />
       </Routes>
       <ToastContainer />
     </>
