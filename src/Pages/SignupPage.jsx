@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../services/api";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -34,7 +34,7 @@ const SignupPage = () => {
     try{
       const { email, password, fullName } = formData;
 
-      const response = await axios.post("/api/v1/users/register", {
+      const response = await api.post("/v1/users/register", {
         email: email,
         password: password,
         fullName: fullName,

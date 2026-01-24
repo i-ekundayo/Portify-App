@@ -41,6 +41,8 @@ const LoginPage = () => {
         email,
         password
       });
+      localStorage.setItem("token", response.data.token);
+      
       toast.success(response.data.message);
       navigate("/dashboard/personal-info")
 

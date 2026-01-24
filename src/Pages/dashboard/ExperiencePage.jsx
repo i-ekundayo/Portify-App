@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header.jsx";
 import Sidebar from "./Sidebar.jsx";
+import UploadBox from "./UploadBox.jsx";
 
 const ExperiencePage = () => {
+  const placeholder =
+    "Upload your project / design / pictures (screens or pages)";
   return (
     <div className="personal-info-page">
       <Header />
@@ -59,41 +62,37 @@ const ExperiencePage = () => {
                 />
               </div>
               <div className="flex flex-col gap-2.5 col-span-full">
-                <label htmlFor="textarea">
+                <label htmlFor="achievements">
                   Responsibilities & Achievements
                 </label>
                 <textarea
-                  name="textarea"
-                  id=""
+                  name="achievements"
+                  id="achievements"
                   rows="8"
                   placeholder="List your responsibilities, projects, and key accomplishment"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
                 ></textarea>
               </div>
-              <div className="flex flex-col gap-2.5 col-span-full">
-                <label htmlFor="textarea">Upload Images</label>
-                <input
-                  type="file"
-                  id=""
-                  rows="8"
-                  placeholder="Upload your project / design / pictures (screens or pages)"
-                  className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
-                ></input>
+              <div className="flex flex-col gap-2.5 col-span-full ">
+                <label htmlFor="images">Upload Images</label>
+                <UploadBox placeholder={placeholder} />
               </div>
               <div className="flex flex-col gap-2.5 col-span-full">
-                <label htmlFor="textarea">Description Box</label>
-                <input
-                  name="textarea"
+                <label htmlFor="description">Description Box</label>
+                <textarea
+                  name="description"
                   id=""
                   rows="5"
                   placeholder="Write a brief summary ON THE PROJECT ABOVE"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
-                ></input>
+                ></textarea>
               </div>
               <div className="flex flex-col gap-2.5 col-span-full">
-                <label htmlFor="textarea">Professional Summary</label>
+                <label htmlFor="professional-summary">
+                  Professional Summary
+                </label>
                 <textarea
-                  name="textarea"
+                  name="professional-summary"
                   id=""
                   rows="8"
                   placeholder="Briefly describe your professional journey"

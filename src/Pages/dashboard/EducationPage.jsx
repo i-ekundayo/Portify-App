@@ -1,5 +1,7 @@
+import api from "../../services/api.js";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Header from "../../Components/Header.jsx";
 import Sidebar from "./Sidebar.jsx";
 import { FaAngleDown } from "react-icons/fa6";
@@ -9,16 +11,81 @@ import "./EducationPage.css";
 
 const EducationPage = () => {
   const [dropDown, setDropDown] = useState(false);
-  const [degree, setDegree] = useState("");
+  const [formData, setFormData] = useState({
+    degree: "",
+    university: "",
+    course: "",
+    yearOfGrad: "",
+    location: "",
+    description: "",
+  });
+  const navigate = useNavigate();
 
+  // Toggle the dropdown menu
   const toggleDropDown = () => {
     setDropDown((prev) => !prev);
   };
 
+  // Select a degree
   const selectedDegree = (e) => {
-    setDegree(e.target.textContent);
+    setFormData((prev) => ({
+      ...prev,
+      degree: e.target.textContent,
+    }));
     setDropDown(false);
-  }
+  };
+
+  // Store all inputs in an object
+  const getInput = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    console.log(formData);
+    
+  };
+
+  // Submit personal info
+  const Education = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+
+    const { degree, university, course, yearOfGrad, location, description } =
+      formData;
+
+    try {
+      const response = await api.post(
+        "/v1/education",
+        {
+          degree,
+          university,
+          course,
+          yearOfGrad,
+          location,
+          description,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      console.log(response);
+
+      toast.success(response.data.message);
+      navigate("/dashboard/experience");
+    } catch (error) {
+      console.log(error);
+
+      toast.error(
+        error.response?.data?.message || "Failed to Upload Education",
+      );
+    }
+  };
 
   return (
     <div className="personal-info-page">
@@ -47,10 +114,12 @@ const EducationPage = () => {
                 <label htmlFor="degree">Degree</label>
                 <div className="relative">
                   <input
+                    name="degree"
                     type="text"
                     placeholder="Enter your LinkedIn URL"
                     className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 w-full"
-                    value={degree}
+                    value={formData.degree}
+                    readOnly
                   />
                   <FaAngleDown
                     className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer"
@@ -113,44 +182,58 @@ const EducationPage = () => {
               <div className="flex flex-col gap-2.5">
                 <label htmlFor="university">University</label>
                 <input
+                  name="university"
                   type="text"
                   placeholder="Enter your school name"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
+                  onChange={getInput}
+                  value={formData.university}
                 />
               </div>
               <div className="flex flex-col gap-2.5">
                 <label htmlFor="course">Course</label>
                 <input
+                  name="course"
                   type="text"
                   placeholder="Enter your course of study"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
+                  onChange={getInput}
+                  value={formData.course}
                 />
               </div>
               <div className="flex flex-col gap-2.5">
                 <label htmlFor="year-of-graduation">Year of graduation</label>
                 <input
+                  name="yearOfGrad"
                   type="date"
                   placeholder="Enter with country code e.g +234"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
+                  onChange={getInput}
+                  value={formData.yearOfGrad}
                 />
               </div>
               <div className="flex flex-col gap-2.5">
                 <label htmlFor="location">Location</label>
                 <input
+                  name="location"
                   type="text"
                   placeholder="Enter your home address"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5"
+                  onChange={getInput}
+                  value={formData.location}
                 />
               </div>
               <div className="flex flex-col gap-2.5 col-span-full">
-                <label htmlFor="textarea">
+                <label htmlFor="description">
                   Optional: Describe your key learning, achievements or projects
                 </label>
                 <textarea
-                  name="textarea"
+                  name="description"
                   id=""
                   rows="8"
                   className="border-2 border-[#D3D7DD] rounded-xl px-2 py-3 lg:rounded-3xl lg:px-4 lg:py-5 "
+                  onChange={getInput}
+                  value={formData.description}
                 ></textarea>
               </div>
             </form>
@@ -162,7 +245,10 @@ const EducationPage = () => {
                 Back
               </button>
             </Link>
-            <button className="border-2 rounded-xl border-[#1ABCFE] bg-[#1ABCFE] text-white py-2">
+            <button
+              className="border-2 rounded-xl border-[#1ABCFE] bg-[#1ABCFE] text-white py-2"
+              onClick={Education}
+            >
               Next: Experience
             </button>
           </div>
